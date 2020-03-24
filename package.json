@@ -1,0 +1,26 @@
+{
+  "name": "ContactShareUSSD",
+  "preferGlobal": true,
+  "version": "1.0.1",
+  "author": "Wiza Jalakasi <wiza@jalaka.si>",
+  "description": "Contact Sharing using the Africa's Talking API",
+  "license": "MIT",
+  "engines": {
+    "node": ">=0.10"
+  },
+  "scripts": {
+    "start": "node ./app.js"
+  },
+  "dependencies": {
+    "africastalking": "^0.4.0",
+    "body-parser": "^1.15.0",
+    "dotenv": "^2.0.0",
+    "express": "^4.17.1",
+    "morgan": "^1.7.0",
+    "mysql": "^2.10.2",
+    "proper-upper-case": "^0.1.0",
+    "request": "^2.70.0",
+    "sequelize": "^3.20.0",
+    "valib": "^2.0.0"
+  }
+}
