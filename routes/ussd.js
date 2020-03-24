@@ -34,8 +34,7 @@ exports.wiredUssd = function(req, res) {
     }).then(function(registrant) {
       if (registrant) {
         //Registrant exists, terminate application
-        message = 'END Thank you. You have already submitted your information to us.'
-        ';
+        message = 'END Thank you. You have already submitted your information to us.\n';
         res.send(message, 200);
       } else {
         //No registrant, serve the menu
@@ -74,17 +73,17 @@ exports.wiredUssd = function(req, res) {
     message += '2: Yes\n';
     res.send(message, 200);
   } else if (txt[0] === '1' && sessionlength === 6) {
-    message = 'CON What is the name of neighbourhood/estate?\n';
+    message = 'CON What is the name of your apartment/neighbourhood/estate?\n';
     res.send(message, 200);
-  } else if (length sessionlength=== 7 && txt[0] === '1') {
-    //We commit to db
+  } else if (txt[0] === '1' && sessionlength=== 7) {
+    //We commit to DB
     message = 'END Thank you, your information has been recorded.';
     res.send(message, 200);
 
     db.Registrant.create({
       has_fever: txt[1],
       is_coughing: txt[2],
-      breathing_issues: txt[3]),
+      breathing_issues: txt[3],
       travel_last_14_days: txt[4],
       met_with_corona_patient: txt[5],
       neighbourhood_or_estate: txt[6],
