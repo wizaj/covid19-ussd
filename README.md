@@ -1,5 +1,6 @@
 ### COVID-19 Self Reporting USSD Utility
 ### Runs on Africa's Talking USSD API - https://africastalking.com/ussd
+### Based on Rwanda Government's USSD self reporting tool. All props to them!
 ### Questions?
 ### https://twitter.com/wizaj
 
