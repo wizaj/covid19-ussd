@@ -6,7 +6,7 @@ var Sequelize = require('sequelize');
 var config    = require(__dirname + './../config/config');
 
 var sequelize = new Sequelize(config.mysql.db, config.mysql.user,
-  config.mysql.pass, { host: config.mysql.host, dialect: 'mysql', autoIncrement: true });
+  config.mysql.pass, { host: config.mysql.host, dialect: 'mysql', dialectModule: 'pg', autoIncrement: true });
 var db        = {};
 
 fs
