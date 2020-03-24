@@ -1,12 +1,13 @@
 ### COVID-19 Self Reporting USSD Utility
+### Questions?
 ### https://twitter.com/wizaj
 
 ### How to run
 
-- Install node.js version ver >5.x.x
-- Install mysql (create user for it, and database covid19ussd)
+- Install node.js version > 5.x.x
+- Install mysql, create user for database covid19ussd, give all permissions
 
-### Create a .env file at the root of the project with the following configs
+### Create a .env file at the root of the project folder with the following config
 
 ```
 PORT=

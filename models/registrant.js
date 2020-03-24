@@ -2,17 +2,21 @@
 
 module.exports = function(sequelize, DataTypes) {
   var Registrant = sequelize.define('Registrant', {
+    phone_number: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     has_fever: {
       type: DataTypes.STRING,
       allowNull: false
     },
     is_coughing: {
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: false
     },
     breathing_issues: {
       type: DataTypes.STRING,
-      unique: true
+      unique: false
     },
     travel_last_14_days: {
       type: DataTypes.STRING,

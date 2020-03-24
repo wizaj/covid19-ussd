@@ -22,7 +22,7 @@ exports.wiredUssd = function(req, res) {
 
   console.log(sessionId, serviceCode, phoneNumber, text);
 
-  var length = text.split('*').length;
+  var sessionlength = text.split('*').length;
   var txt = text.split('*');
   res.contentType('text/plain');
 
@@ -39,7 +39,7 @@ exports.wiredUssd = function(req, res) {
         res.send(message, 200);
       } else {
         //No registrant, serve the menu
-        message = 'CON COVID-19 Self Reporting\n';
+        message = 'CON COVID-19 Symptom Reporting\n';
         message += 'Welcome\n';
         message += '1: Submit my info\n';
         message += '2: About this app\n';
@@ -47,53 +47,56 @@ exports.wiredUssd = function(req, res) {
         res.send(message, 200);
       }
     });
-  } else if (text === '1' && txt[0] === '1') {
+  } else if (txt[0] === '1' && text === '1') {
     //If DB miss, we present the input menu to user
-    message = 'CON Do you have a fever?';
+    message = 'CON Do you have a fever?\n';
     message += '1: No\n';
     message += '2: Yes\n';
     res.send(message, 200);
-  } else if (length === 2 && txt[0] === '1') {
-    message = 'CON Are you coughing?';
+  } else if (txt[0] === '1' && sessionlength === 2) {
+    message = 'CON Are you coughing?\n';
     message += '1: No\n';
     message += '2: Yes\n';
     res.send(message, 200);
-  } else if (length === 3 && txt[0] === '1') {
+  } else if (txt[0] === '1' && sessionlength === 3) {
+    message = 'CON Are you having difficulty breathing?\n';
+    message += '1: No\n';
+    message += '2: Yes\n';
+    res.send(message, 200);
+  } else if (txt[0] === '1' && sessionlength === 4) {
+    message = 'CON In the last 14 days, have you traveled to any countries with cases of COVID-19?\n';
+    message += '1: No\n';
+    message += '2: Yes\n';
+    res.send(message, 200);
+  } else if (txt[0] === '1' && sessionlength === 5) {
+    message = 'CON Have you met with any person showing symptons of COVID-19?\n';
+    message += '1: No\n';
+    message += '2: Yes\n';
+    res.send(message, 200);
+  } else if (txt[0] === '1' && sessionlength === 6) {
+    message = 'CON What is the name of neighbourhood/estate?\n';
+    res.send(message, 200);
+  } else if (length sessionlength=== 7 && txt[0] === '1') {
     //We commit to db
-    var options = text.split('*');
-    message = 'END Thank you ' + changeCase(options[1]) + ', sending your info to the cloud :)';
+    message = 'END Thank you, your information has been recorded.';
     res.send(message, 200);
 
     db.Registrant.create({
-      first_name: changeCase(options[1]),
-      last_name: changeCase(options[2]),
-      language_pref: changeCase(options[0]),
+      has_fever: txt[1],
+      is_coughing: txt[2],
+      breathing_issues: txt[3]),
+      travel_last_14_days: txt[4],
+      met_with_corona_patient: txt[5],
+      neighbourhood_or_estate: txt[6],
       phone_number: phoneNumber
     }).then(function(Registrant) {
       console.log('Registrant added', Registrant);
     });
-
-    var smsOptions = {
-      to: phoneNumber,
-      message: 'Thank you ' + changeCase(options[1]) + '. See? This works!'
-    };
-
-    return sms.send(smsOptions)
-      .then(function(s) {
-        console.log('[SUCCESS] -> SMS Send');
-        console.log(JSON.stringify(s, 0, 4) + '\n');
-        res.send(message, 200);
-      })
-      .catch(function(err) {
-        console.log('[FAILURE] -> SMS Send');
-        console.log(err + '\n');
-        res.send(message, 200);
-      });
   } else if (text === '2') {
     message = 'END Made with love by Wiza Jalakasi\n';
-    message += 'An app to to demo AT USSD APIs\n';
-    message += 'Powered by Africa\'s Talking\n';
-    message += 'Web: http://www.africastalking.com\n';
+    message += 'Your phone number and data is stored securely.\n';
+    message += 'We will only share info with Ministry of Health.\n';
+    message += 'Questions? @wizaj on Twitter\n';
     message += 'Email: wiza@jalaka.si\n';
     res.send(message, 200);
   } else if (text === '3') {
