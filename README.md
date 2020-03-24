@@ -1,4 +1,5 @@
 ### COVID-19 Self Reporting USSD Utility
+### Runs on Africa's Talking USSD API - https://africastalking.com/ussd
 ### Questions?
 ### https://twitter.com/wizaj
 
@@ -6,6 +7,7 @@
 
 - Install node.js version > 5.x.x
 - Install mysql, create user for database covid19ussd, give all permissions
+- Deploy to a server of your choice, and configure [your_ip]/ussd route to Africa's Talking USSD Callback URL
 
 ### Create a .env file at the root of the project folder with the following config
 
