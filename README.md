@@ -1,4 +1,4 @@
-### COVID-19 Self Reporting USSD Utility
+### COVID-19 Self Reporting USSD Utility (DEVELOPER BRANCH)
 ### Runs on Africa's Talking USSD API - https://africastalking.com/ussd
 ### Questions?
 ### https://twitter.com/wizaj
