@@ -1,11 +1,10 @@
-### amHealth USSD
-### Forked from Node JS Africa's Talking Sample App
+### COVID-19 Self Reporting USSD Utility
+### https://twitter.com/wizaj
 
 ### How to run
 
-- Install node.js version ver >5.x.x (this app runs with ES6 language features)
-- Install mysql (create user root, and database amhealthussd)
-
+- Install node.js version ver >5.x.x
+- Install mysql (create user for it, and database covid19ussd)
 
 ### Create a .env file at the root of the project with the following configs
 
@@ -16,7 +15,7 @@ AT_USERNAME=
 AT_APIKEY=
 
 DB_HOST=
-DB_NAME=amhealth
+DB_NAME=covid19ussd
 DB_USER=
 DB_PASS=
 ```
