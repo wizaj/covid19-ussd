@@ -38,8 +38,8 @@ exports.wiredUssd = function(req, res) {
         res.send(message, 200);
       } else {
         //No registrant, serve the menu
-        message = 'CON COVID-19 Symptom Reporting\n';
-        message += 'Welcome\n';
+        message = 'CON Jifahamishe USSD\n';
+        message += 'COVID-19 Screening Tool\n';
         message += '1: Submit my info\n';
         message += '2: About this app\n';
         message += '3: Exit\n';
@@ -48,7 +48,7 @@ exports.wiredUssd = function(req, res) {
     });
   } else if (txt[0] === '1' && text === '1') {
     //If DB miss, we present the input menu to user
-    message = 'CON Do you have a fever?\n';
+    message = 'CON Do you have a fever (high temperature, headache etc)?\n';
     message += '1: No\n';
     message += '2: Yes\n';
     res.send(message, 200);
@@ -68,14 +68,17 @@ exports.wiredUssd = function(req, res) {
     message += '2: Yes\n';
     res.send(message, 200);
   } else if (txt[0] === '1' && sessionlength === 5) {
-    message = 'CON Have you met with any person showing symptons of COVID-19?\n';
+    message = 'CON Have you met with any person showing symptoms of COVID-19?\n';
     message += '1: No\n';
     message += '2: Yes\n';
     res.send(message, 200);
   } else if (txt[0] === '1' && sessionlength === 6) {
-    message = 'CON What is the name of your apartment/neighbourhood/estate?\n';
+    message = 'CON What is the name of your area?\n';
     res.send(message, 200);
-  } else if (txt[0] === '1' && sessionlength=== 7) {
+  } else if (txt[0] === '1' && sessionlength === 7) {
+    message = 'CON What is the name of the nearest primary school to you?\n';
+    res.send(message, 200);
+  } else if (txt[0] === '1' && sessionlength=== 8) {
     //We commit to DB
     message = 'END Thank you, your information has been recorded.';
     res.send(message, 200);
@@ -86,7 +89,8 @@ exports.wiredUssd = function(req, res) {
       breathing_issues: txt[3],
       travel_last_14_days: txt[4],
       met_with_corona_patient: txt[5],
-      neighbourhood_or_estate: txt[6],
+      area: txt[6],
+      nearest_primary_school: txt[7],
       phone_number: phoneNumber
     }).then(function(Registrant) {
       console.log('Registrant added', Registrant);

@@ -16,7 +16,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     breathing_issues: {
       type: DataTypes.STRING,
-      unique: false
+      allowNull: false
     },
     travel_last_14_days: {
       type: DataTypes.STRING,
@@ -26,7 +26,11 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
-    neighbourhood_or_estate: {
+    area: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    nearest_primary_school: {
       type: DataTypes.STRING,
       allowNull: false
     }

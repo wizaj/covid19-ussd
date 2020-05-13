@@ -18,6 +18,7 @@
     "express": "^4.17.1",
     "morgan": "^1.7.0",
     "mysql": "^2.10.2",
+    "mysql2": "^2.1.0",
     "proper-upper-case": "^0.1.0",
     "request": "^2.70.0",
     "sequelize": "^5.21.5",
