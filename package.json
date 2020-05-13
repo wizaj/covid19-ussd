@@ -20,7 +20,7 @@
     "mysql": "^2.10.2",
     "proper-upper-case": "^0.1.0",
     "request": "^2.70.0",
-    "sequelize": "^3.20.0",
+    "sequelize": "^5.21.5",
     "valib": "^2.0.0"
   }
 }
